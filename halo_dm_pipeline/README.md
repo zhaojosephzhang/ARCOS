@@ -48,7 +48,6 @@ To avoid manually chaining commands, a lightweight unified execution layer is pr
 ### Dry Run
 
 ```bash
-cd halo_dm_pipeline
 python3 run_halo_dm_pipeline.py all --dry-run
 ```
 

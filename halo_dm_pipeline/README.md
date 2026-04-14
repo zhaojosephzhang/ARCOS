@@ -1,13 +1,17 @@
 # Halo DM / CGM Analysis Pipeline
 
-这套流程用于从大尺度模拟 snapshot / FoF catalogue 中提取 halo 局部物理量，并进一步开展：
+This pipeline is designed to extract local halo properties from large-scale simulation snapshots and FoF catalogues, and to perform a series of analyses including:
 
-- density profile 计算与比较
-- DM vs impact parameter 分析
-- 1D sightline 投影统计
-- 2D observer-style map 处理与可视化
+- Density profile computation and comparison  
+- DM vs. impact parameter analysis  
+- 1D sightline projection statistics  
+- 2D observer-style mapping and visualization  
 
-当前目录包含：
+---
+
+## Repository Structure
+
+The current directory contains:
 
 - `data_halo_storing_with_stellar_MPI_input.py`
 - `density_profile_rv_morebins.py`
@@ -17,19 +21,20 @@
 - `run_halo_dm_pipeline.py`
 - `config.yaml`
 
+---
+
 ## Unified Runner
 
-为了避免每次手动拼接命令，现在目录里增加了一个最小侵入的统一调度层：
+To avoid manually chaining commands, a lightweight unified execution layer is provided.
 
-- `run_halo_dm_pipeline.py`
-- `config.yaml`
+### Design Principles
 
-设计原则是：
+- No modification to existing scientific scripts  
+- Centralized control of parameters, execution order, MPI configuration, and working directories  
 
-- 不改你现有的科学主脚本
-- 只在外层统一管理参数、步骤顺序、MPI 包装方式和工作目录
+---
 
-支持的步骤名：
+### Supported Steps
 
 - `prepare`
 - `density_profile`
@@ -38,26 +43,24 @@
 - `map2d`
 - `all`
 
-最常用的查看方式：
+---
+
+### Dry Run
 
 ```bash
 cd halo_dm_pipeline
 python3 run_halo_dm_pipeline.py all --dry-run
-```
 
-这会打印将要执行的命令，但不会真正运行。
+This prints all commands without executing them.
 
-如果要实际运行某一个步骤，例如只做数据准备：
+Run Single Step：
 
 ```bash
-cd halo_dm_pipeline
 python3 run_halo_dm_pipeline.py prepare
 ```
 
-如果要按配置顺序运行全部已启用步骤：
-
+Run Full Pipeline
 ```bash
-cd halo_dm_pipeline
 python3 run_halo_dm_pipeline.py all
 ```
 

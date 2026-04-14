@@ -8,6 +8,7 @@ This folder contains the **box-stacking** implementation of the light-cone DM ca
 - `Ray_tracing_no_roating.py`: production script that generates the data products without the extra plotting cells.
 - `Ray_tracing_rotating_box.ipynb`: notebook front-end for the rotating-box variant.
 - `Ray_tracing_rotating_box.py`: production script for the rotating-box variant.
+- `Ray_tracing_script_runner.ipynb`: lightweight control notebook that directly imports the two `.py` scripts and runs them from a small number of configuration cells.
 
 ## Methods
 

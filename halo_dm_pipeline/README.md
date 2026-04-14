@@ -314,5 +314,3 @@ python Halo_DM_map_process_thread_P_joblib_observer_z.py [snap_num] [feedback_on
 ```bash
 halo_dm_pipeline/assets/
 ```
-
-我就可以继续帮你把 README 里的图片链接补成真正可显示的 GitHub 图片。

@@ -58,4 +58,4 @@ The script writes the stitched light-cone data products to HDF5 and also records
 
 Figure reference for this method:
 
-![Figure 1](../figures/figure1_parallel_rotating_los.png)
+![Figure 1](../figures/figure1_parallel_rotating_los.jpg)

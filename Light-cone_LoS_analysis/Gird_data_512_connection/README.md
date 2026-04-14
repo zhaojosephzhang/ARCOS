@@ -20,6 +20,14 @@ In this implementation the main scientific products are:
 - LOS-resolved cumulative DM histories
 - flattened redshift and comoving-distance coordinates for the stitched cone
 
+## Input Data
+
+The input data for this workflow are the `grid_data` products generated from **GADGET4-Osaka** simulation outputs. In these files, physical quantities such as density, temperature, mass, and related gas properties are assigned onto regular Cartesian grids at a chosen resolution level. Typical examples are:
+
+- `lv7`: `256^3` grid cells
+- `lv8`: `512^3` grid cells
+- `lv9`: `1024^3` grid cells
+
 ## Dependencies
 
 The notebook and script were developed around the following Python packages:

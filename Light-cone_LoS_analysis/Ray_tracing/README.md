@@ -38,6 +38,12 @@ These scripts were written for a standard scientific Python environment and rely
 
 ## Input Data Assumptions
 
+The input data for this workflow are the `grid_data` products generated from **GADGET4-Osaka** simulation outputs. In these files, physical quantities such as density, temperature, mass, and related gas properties are assigned onto regular Cartesian grids at a chosen resolution level. Typical examples are:
+
+- `lv7`: `256^3` grid cells
+- `lv8`: `512^3` grid cells
+- `lv9`: `1024^3` grid cells
+
 Both scripts expect CROCODILE fullbox files with datasets and attributes such as:
 - `/Cell/GridPos`
 - `/Cell/GasDensity`

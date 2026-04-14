@@ -14,6 +14,77 @@
 - `DM_Impact_factor_morebin.py`
 - `Halo_DM_1D_map_joblib_withstellar.py`
 - `Halo_DM_map_process_thread_P_joblib_observer_z.py`
+- `run_halo_dm_pipeline.py`
+- `config.yaml`
+
+## Unified Runner
+
+为了避免每次手动拼接命令，现在目录里增加了一个最小侵入的统一调度层：
+
+- `run_halo_dm_pipeline.py`
+- `config.yaml`
+
+设计原则是：
+
+- 不改你现有的科学主脚本
+- 只在外层统一管理参数、步骤顺序、MPI 包装方式和工作目录
+
+支持的步骤名：
+
+- `prepare`
+- `density_profile`
+- `dm_impact`
+- `map1d`
+- `map2d`
+- `all`
+
+最常用的查看方式：
+
+```bash
+cd halo_dm_pipeline
+python3 run_halo_dm_pipeline.py all --dry-run
+```
+
+这会打印将要执行的命令，但不会真正运行。
+
+如果要实际运行某一个步骤，例如只做数据准备：
+
+```bash
+cd halo_dm_pipeline
+python3 run_halo_dm_pipeline.py prepare
+```
+
+如果要按配置顺序运行全部已启用步骤：
+
+```bash
+cd halo_dm_pipeline
+python3 run_halo_dm_pipeline.py all
+```
+
+## Config File
+
+样例配置在：
+
+`config.yaml`
+
+它分成两部分：
+
+- `pipeline`
+  控制 Python 解释器、工作目录、MPI launcher、MPI 进程数等
+- `steps`
+  控制每个步骤是否启用、使用哪个脚本、是否用 MPI、参数如何传入
+
+例如：
+
+- `steps.prepare.args.snapshot_number`
+- `steps.map1d.args.mass_range`
+- `steps.map2d.args.snap_num`
+
+如果你的环境支持 `PyYAML`，runner 会直接读取 `config.yaml`。
+如果没有安装 `PyYAML`，可以：
+
+- 安装 `PyYAML`
+- 或者把配置改写成 JSON，再通过 `--config` 传入
 
 ## Workflow
 

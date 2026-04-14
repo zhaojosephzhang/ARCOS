@@ -1,0 +1,55 @@
+pipeline:
+  python: python3
+  workdir: .
+  mpi:
+    enabled: false
+    launcher: mpirun
+    np: 2
+    extra_args: []
+
+steps:
+  prepare:
+    enabled: true
+    script: data_halo_storing_with_stellar_MPI_input.py
+    use_mpi: false
+    args:
+      snapshot_number: 19
+
+  density_profile:
+    enabled: false
+    script: density_profile_rv_morebins.py
+    use_mpi: false
+    args:
+      raw: []
+
+  dm_impact:
+    enabled: false
+    script: DM_Impact_factor_morebin.py
+    use_mpi: false
+    args:
+      a: [1.0]
+      h: [0.67742]
+      boxsize: [100]
+      boxname: ["20_f"]
+      factor_rv: 2
+
+  map1d:
+    enabled: false
+    script: Halo_DM_1D_map_joblib_withstellar.py
+    use_mpi: true
+    args:
+      mass_range: "13-14"
+      halo_num: 10
+      snap_num: 20
+      radial_bin_mode: inner
+      agn_info: both
+      h5_write_mode: overwrite
+      mpi_io_mode: merge
+
+  map2d:
+    enabled: false
+    script: Halo_DM_map_process_thread_P_joblib_observer_z.py
+    use_mpi: true
+    args:
+      snap_num: 20
+      feedback_on: 1

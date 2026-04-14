@@ -213,7 +213,11 @@ density_profile_rv_morebins.py
 * Outputs profile curves with uncertainty bands
   
 ### Result Example
-![Density_Profle](./assets/Combined_rho_gas_r_Error_Median_Curves_Boxes_fiducial.png)
+
+<p align="center">
+  <img src="./assets/Combined_rho_gas_r_Error_Median_Curves_Boxes_fiducial.png" width="70%">
+</p>
+
 
 ---
 
@@ -235,7 +239,9 @@ DM_Impact_factor_morebin.py
 
 ### Result Example
 
-![Impact Parameter Method](./assets/Combined_DM_20_n_Error_Median_Curves_50_100Mpc_latest.png)
+<p align="center">
+  <img src="./assets/Combined_DM_20_n_Error_Median_Curves_50_100Mpc_latest.png" width="100%">
+</p>
 
 ---
 
@@ -268,13 +274,18 @@ Halo_DM_1D_map_joblib_withstellar.py
 
 ### Method Illustration
 
-![1D LOS Method](./assets/1D_los_method.png)
+<p align="center">
+  <img src="./assets/1D_los_method.png" width="40%">
+</p>
+
 
 ---
 
 ### Result Example
 
-![1D DM Distribution](./assets/Halo_1D_DM_distribution.png)
+<p align="center">
+  <img src="./assets/Halo_1D_DM_distribution.png" width="100%">
+</p>
 
 ---
 
@@ -323,14 +334,17 @@ Halo_DM_map_process_thread_P_joblib_observer_z.py
 
 ### Method Illustration
 
-![2D LOS Method](./assets/2D_LOS_Method.png)
+<p align="center">
+  <img src="./assets/2D_LOS_Method.png" width="100%">
+</p>
 
 ---
 
 ### Result Example
 
-![2D Halo Map](./assets/LOS_Halo_2D_map.png)
-
+<p align="center">
+  <img src="./assets/LOS_Halo_2D_map.png" width="40%">
+</p>
 ---
 
 ### Command

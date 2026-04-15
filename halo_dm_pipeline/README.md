@@ -417,9 +417,3 @@ halo_dm_pipeline/assets/
 
 ---
 
-## Future Improvements
-
-* Add automatic figure generation
-* Integrate HEALPix-based sky projection
-* Add angular correlation analysis for DM
-* Extend to full light-cone simulations

@@ -408,20 +408,6 @@ halo_dm_pipeline/assets/
 
 ---
 
-### Suggested Assets
-
-```
-assets/
-├── density_profile_example.png
-├── impact_parameter_geometry.png
-├── impact_parameter_dm_result.png
-├── oned_sightline_method.png
-├── oned_dm_distribution_example.png
-├── twod_mapping_method.png
-├── twod_mapping_example.png
-```
-
----
 
 ## Notes
 

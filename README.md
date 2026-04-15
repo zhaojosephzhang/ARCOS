@@ -125,8 +125,8 @@ Recommended entry points:
 
 - `halo_subhalo_catalog/` → catalog generation  
 - `halo_dm_pipeline/` → halo-centered DM and gas analysis  
-- `igm_pipeline/` → baryon evolution analysis  
-- `fb_pipeline/` → feedback-related profiles  
+- `igm_pipeline/` → baryon evolution analysis in IGM and CGM for differnet components
+- `fb_pipeline/` → baryon-fraction profiles  
 - `Light-cone_LoS_analysis/` → light-cone and LoS-based DM studies  
 
 ---

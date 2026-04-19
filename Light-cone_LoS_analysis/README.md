@@ -1,4 +1,4 @@
-# FALCON (FRB Analysis & Light-cone COsmology based on simulatioN)
+# FALCON (FRB Analysis & Light-cone COsmology on simulatioN)
 
 This directory collects two complementary CROCODILE light-cone pipelines.
 

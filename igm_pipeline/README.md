@@ -90,9 +90,6 @@ This pipeline produces the redshift evolution of the following quantities:
 
 Results are written to:
 
-* `storage_path`
-* `kdtree_output_path`
-
 ### `kdtree_output_path`
 
 This directory stores the **intermediate KDTree-based spatial indexing data**, designed to accelerate particle queries.

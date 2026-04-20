@@ -31,7 +31,7 @@ Typical runtime requirements:
 
 - PBS job scheduler
 - MPI (`mpirun`)
-- Conda environment `zhangzhao-env`
+- Conda environment `zhangzhao-env` (example)
 - Python packages:
   - `numpy`
   - `h5py`

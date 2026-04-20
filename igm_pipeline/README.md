@@ -75,16 +75,16 @@ mpirun ${NQSV_MPIOPTS} -genv I_MPI_DEBUG 5 -np 2 -genv I_MPI_PIN_DOMAIN=node \
 
 ## Outputs
 
-This pipeline produces the following quantities:
+This pipeline produces the redshift evolution of the following quantities:
 
-- `f_IGM` (as a function of redshift)
-- `f_CGM` (as a function of redshift)
-- `f_star`
-- `f_BH`
-- `f_cold_dense`
-- `f_cold_diff`
-- `f_hot_dense`
-- `f_hot_diff`
+* `f_IGM`
+* `f_CGM`
+* `f_star`
+* `f_BH`
+* `f_cold_dense`
+* `f_cold_diff`
+* `f_hot_dense`
+* `f_hot_diff`
 
 ## Output Location
 Results are written to:

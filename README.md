@@ -34,7 +34,7 @@ Therefore, the code may not always be fully modular or user-friendly. Please exc
 
 This repository is organized into several analysis pipelines and utility modules. Each subdirectory focuses on a specific type of workflow.
 
-### Core Pipelines
+### Core IGM & CGM Pipelines
 
 - `fb_pipeline/`  
   Baryon-Fraction-related analysis, including radial baryon fraction profiles in halos and batch processing across redshifts  

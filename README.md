@@ -1,4 +1,4 @@
-# Cosmological Simulation Analysis based on CROCODILE
+# Analysis pipelines for fRb COsmology & Simulation (ARCOS)
 
 This repository contains a collection of analysis scripts built around simulation data from **[CROCODILE](https://sites.google.com/view/crocodilesimulation/)**, based on **GADGET4-Osaka**.
 

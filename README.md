@@ -110,7 +110,7 @@ While the **scientific logic is reusable**, direct execution may require environ
 
 ## Citation
 
-If you use ARCOS in your research, please cite:
+If you use ARCOS in your research, please consider citing:
 
 ### Related Scientific Publication
 

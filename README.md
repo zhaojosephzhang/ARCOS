@@ -120,7 +120,7 @@ Zhang et al. (2025), [*ApJ*, 980, 194](https://iopscience.iop.org/article/10.384
 
 Zhang, Z. J. (2026). [ARCOS]: Analysis Repository for Cosmological FRB Studies in Simulations (Version 1.0). Zenodo. 
 
-[DOI: 10.5281/zenodo.20487842](https://doi.org/10.5281/zenodo.20487842)
+DOI: [10.5281/zenodo.20487842](https://doi.org/10.5281/zenodo.20487842)
 
 ---
 

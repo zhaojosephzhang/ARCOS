@@ -1,0 +1,193 @@
+\documentclass[twocolumn]{aastex631}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{hyperref}
+
+\newcommand{\DM}{\mathrm{DM}}
+\newcommand{\EM}{\mathrm{EM}}
+\newcommand{\ne}{n_{\rm e}}
+\newcommand{\nH}{n_{\rm H}}
+\newcommand{\pc}{\mathrm{pc}}
+\newcommand{\kpc}{\mathrm{kpc}}
+\newcommand{\kms}{\mathrm{km\,s^{-1}}}
+\newcommand{\Msun}{M_{\odot}}
+
+\shorttitle{Milky-Way-like DM and EM in AGORA}
+\shortauthors{Zhang et al.}
+
+\begin{document}
+
+\title{Dispersion and Emission Measures through Milky-Way-like Galaxies in the AGORA Code Comparison}
+
+\author{Your Name}
+\affiliation{Your Affiliation}
+
+\begin{abstract}
+% Abstract intentionally left blank.
+\end{abstract}
+
+\keywords{galaxies: halos --- galaxies: ISM --- methods: numerical --- intergalactic medium --- radio continuum: transients}
+
+\section{Introduction}\label{sec:intro}
+Fast radio bursts (FRBs) provide a direct probe of the ionized baryon distribution through the dispersion measure, while emission measure traces the density-squared contribution from ionized gas.  Separating the Milky-Way-like interstellar medium, circumgalactic medium, and hot gas contributions is therefore essential for interpreting localized FRB observations and for connecting FRB sightlines to galaxy formation simulations.
+
+In this work, we use the AGORA code comparison data set to quantify the range of predicted \DM{} and \EM{} values for Milky-Way-like galaxies simulated with different hydrodynamic solvers and feedback implementations.  The goal is to compare the line-of-sight ionized-gas observables across codes using a uniform post-processing pipeline, while carefully tracking geometry, units, ionization prescriptions, and projection conventions.
+
+\section{Simulation Data}\label{sec:data}
+We analyze the AGORA $z\sim0$ Milky-Way-like galaxy snapshots from several simulation codes, including ART-I, Enzo, AREPO, GADGET-3, GEAR, CHANGA, and G4Cal/Pablo when available.  The snapshots are loaded with \texttt{yt}, and all positions, velocities, masses, densities, and temperatures are converted to physical units before constructing derived quantities.
+
+For particle-based data sets, the gas and stellar components are identified from the native particle types.  For grid or AMR data sets, the native gas fields are used directly.  Special attention is paid to code-specific metadata, since some snapshots provide self-describing HDF5 unit information while Tipsy-format data require explicit confirmation of the length, mass, and time units.
+
+\section{Coordinate System and Galaxy Frame}\label{sec:frame}
+For each snapshot, we define a galaxy-centered face-on coordinate system.  The default center is the stellar center of mass, with fallbacks to a gas-density peak when a robust stellar center is unavailable.  The disk angular momentum vector is computed from either stars or gas within a selected aperture, depending on the data quality and the code-specific configuration.  The rotation matrix then maps the simulation frame into a face-on frame in which the disk angular momentum is aligned with the $z$ axis.
+
+The observer is placed at a Solar-circle radius,
+\begin{equation}
+    R_{\odot} = 8.2\,\kpc,
+\end{equation}
+with a small vertical offset.  Random-observer tests rotate the observer azimuthally within the disk plane to assess orientation variance.
+
+\section{Ionization and Electron Density}\label{sec:ionization}
+The electron density is constructed using a hierarchical ionization prescription.  When reliable ion or electron fraction fields are available, they are used directly.  If the available ion fraction appears to be a numerical floor or is otherwise unsuitable, the pipeline falls back to a temperature-weighted ionization model.  If no temperature information is available, a fully ionized approximation is used as the final fallback.
+
+For hydrogen-dominated gas, the electron density can be written schematically as
+\begin{equation}
+    \ne = x_{\rm e}\,\frac{X_{\rm H}\rho}{m_{\rm p}},
+\end{equation}
+where $x_{\rm e}$ is the adopted ionized fraction, $X_{\rm H}$ is the hydrogen mass fraction, $\rho$ is the gas mass density, and $m_{\rm p}$ is the proton mass.  The exact implementation depends on the fields available in each simulation output.
+
+\section{Line-of-sight Integration}\label{sec:los}
+For each galaxy, we sample $N_{\rm LOS}$ directions over the sky and integrate from the observer to a maximum path length $s_{\rm max}$.  Along each sightline, the total dispersion measure is computed as
+\begin{equation}
+    \DM = \int \ne\,dl,
+\end{equation}
+with units of $\pc\,\mathrm{cm}^{-3}$.  The total emission measure is
+\begin{equation}
+    \EM = \int \ne^2\,dl,
+\end{equation}
+with units of $\pc\,\mathrm{cm}^{-6}$.  We also separate ISM, CGM, and hot-gas contributions using cylindrical and temperature cuts.  The default ISM region is defined by
+\begin{equation}
+    R < 20\,\kpc, \qquad |z| < 5\,\kpc,
+\end{equation}
+while hot gas is selected using $T \geq 10^6\,\mathrm{K}$.
+
+Particle-based sightline estimates use local neighbor interpolation, while grid-based data are integrated through native grid or AMR fields.  The pipeline records the backend used for each run.
+
+\section{Projection Maps}\label{sec:projection}
+We produce face-on and edge-on maps of gas surface density, stellar surface density, gas temperature, and line-of-sight velocity.  In the face-on view, the projected plane is $(x_{\rm face}, y_{\rm face})$ and the line of sight is the disk-frame $z$ direction.  In the edge-on view, the projected plane is $(x_{\rm face}, z_{\rm face})$ and the line of sight is the disk-frame $y$ direction.
+
+The projection maps can be generated either as full-column projections or as finite-thickness slices.  In the slice mode used for the main comparison figures, the face-on projection keeps only gas or star elements satisfying
+\begin{equation}
+    |z_{\rm face}| \leq H_{\rm proj},
+\end{equation}
+whereas the edge-on projection keeps
+\begin{equation}
+    |y_{\rm face}| \leq H_{\rm proj}.
+\end{equation}
+We adopt $H_{\rm proj}=5\,\kpc$ unless otherwise stated.
+
+\section{Statistical Analysis}\label{sec:statistics}
+For each code, we compute the distribution of \DM{}, total \EM{}, and hot-gas \EM{} over all sampled sightlines.  We compare the empirical probability density functions across simulation codes and fit the \DM{} distributions with several parametric models, including log-normal, Weibull, generalized Pareto tail, and multi-Gaussian models in log-space.  These fits are used only as compact summaries of the distributions, not as physical models of the gas.
+
+We also compute special sightline diagnostics for random observer positions, including directions toward and away from the Galactic center analogue and directions perpendicular to the disk.  These diagnostics isolate orientation effects and the sensitivity of \DM{} and \EM{} to the local observer position.
+
+\section{Results}\label{sec:results}
+\subsection{Morphology of the Gas and Stellar Disks}
+Figure~\ref{fig:projection_atlas} compares the projected gas, stars, temperature, and velocity fields across the AGORA codes.  The stellar maps generally show coherent disk-like structures in the face-on and edge-on views, while the gas maps display stronger code-to-code variation in clumpiness, disk thickness, and extended structure.  These differences directly affect the sightline \DM{} and \EM{} distributions.
+
+\begin{figure*}
+    \centering
+    % \includegraphics[width=0.95\textwidth]{parallel_outputs/viewer_figures/projection_atlas_across_codes.png}
+    \caption{Projection atlas across simulation codes.  Columns show codes and rows show gas surface density, stellar surface density, temperature, and velocity maps in face-on and edge-on views.}
+    \label{fig:projection_atlas}
+\end{figure*}
+
+\subsection{All-sky DM and EM Maps}
+The all-sky Mollweide maps reveal strong angular variation in both \DM{} and \EM{}.  High-\EM{} regions are more spatially localized than high-\DM{} regions because \EM{} weights dense gas as $\ne^2$.  The comparison between \DM{} and \EM{} therefore separates extended ionized gas columns from compact high-density structures.
+
+\begin{figure*}
+    \centering
+    % \includegraphics[width=0.48\textwidth]{parallel_outputs/ARTI/MWlike_4pi_DM_total_pc_cm3_mollweide.png}
+    % \includegraphics[width=0.48\textwidth]{parallel_outputs/ARTI/MWlike_4pi_EM_ne2_total_pc_cm6_mollweide.png}
+    \caption{Example all-sky Mollweide maps of total \DM{} and total \EM{} for one selected code.}
+    \label{fig:mollweide}
+\end{figure*}
+
+\subsection{PDFs Across Codes}
+Figure~\ref{fig:pdfs} compares the sightline PDFs for \DM{}, total \EM{}, and hot-gas \EM{}.  The differences between codes reflect both the morphology of the simulated disks and the treatment of ionization, temperature, and dense gas.
+
+\begin{figure}
+    \centering
+    % \includegraphics[width=0.48\textwidth]{parallel_outputs/viewer_figures/LOS_pdf_histograms_across_codes.png}
+    \caption{Probability density functions of \DM{}, total \EM{}, and hot-gas \EM{} across selected AGORA codes.}
+    \label{fig:pdfs}
+\end{figure}
+
+\subsection{Hot-gas EM Around the Galactic Center}
+The hot-gas \EM{} is examined as a function of angular separation from the Galactic center analogue.  This diagnostic isolates the contribution of $T\geq10^6\,\mathrm{K}$ gas and highlights directional asymmetries in the halo and inner-galaxy environment.
+
+\begin{figure}
+    \centering
+    % \includegraphics[width=0.48\textwidth]{parallel_outputs/ARTI/MWlike_4pi_hot_EM_vs_GC_angle.png}
+    \caption{Hot-gas \EM{} as a function of angular separation from the Galactic center analogue.}
+    \label{fig:hot_em_angle}
+\end{figure}
+
+\section{Systematic Uncertainties}\label{sec:systematics}
+Several systematic effects must be considered when interpreting the results.  First, different simulation codes output different field sets and unit metadata, requiring code-specific validation.  Second, ionization fields may represent physical ion fractions, numerical floors, or may be absent entirely.  Third, the galaxy center and disk angular momentum are not equally well defined for all codes.  Fourth, particle smoothing lengths and interpolation choices influence projection maps and line-of-sight integrals for particle-based data.
+
+For Tipsy-format CHANGA data, the unit convention requires special care.  If the file does not contain explicit unit metadata, the analysis must either use externally documented Tipsy units or treat the result as provisional.  This is especially important because \DM{} and \EM{} depend directly on physical densities and path lengths.
+
+\section{Default Parameters}\label{sec:params}
+Table~\ref{tab:params} summarizes the main analysis parameters.  A machine-generated version of the current parameter table is stored separately and can be included in the final manuscript.
+
+\begin{table*}
+\centering
+\caption{Default analysis parameters.}
+\label{tab:params}
+\begin{tabular}{lll}
+\toprule
+Parameter & Default value & Description \\
+\midrule
+$N_{\rm LOS}$ & 20000 & Number of all-sky sightlines for production runs \\
+$n_{\rm jobs}$ & 30 & Parallel jobs on the CPU server \\
+$s_{\rm max}$ & $100$--$250\,\kpc$ & Maximum integration distance, depending on run configuration \\
+$\Delta s$ & $0.25\,\kpc$ & Sightline integration step \\
+$R_{\odot}$ & $8.2\,\kpc$ & Observer radius in the disk plane \\
+$R_{\rm ISM}$ & $20\,\kpc$ & ISM cylindrical radial cut \\
+$|z|_{\rm ISM}$ & $5\,\kpc$ & ISM vertical cut \\
+$T_{\rm hot}$ & $10^6\,\mathrm{K}$ & Hot-gas threshold \\
+$L_{\rm proj}$ & $40\,\kpc$ & Projection box size \\
+$N_{\rm pix}$ & $512$ & Projection map resolution \\
+$H_{\rm proj}$ & $5\,\kpc$ & Projection line-of-sight half-thickness for slice maps \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+% To include the full generated parameter table, uncomment after uploading the file to Overleaf:
+% \input{AGORA_current_parameter_table.tex}
+
+\section{Conclusions}\label{sec:conclusions}
+We have developed a uniform post-processing pipeline to compare \DM{} and \EM{} predictions for Milky-Way-like galaxies across the AGORA code comparison suite.  The pipeline constructs a common galaxy frame, applies consistent ionization and temperature selections, generates all-sky sightline maps, and compares the resulting distributions across codes.
+
+The main findings can be summarized as follows:
+\begin{enumerate}
+    \item The predicted \DM{} and \EM{} distributions vary substantially across simulation codes, reflecting differences in gas morphology, disk structure, and ionization treatment.
+    \item \EM{} is more sensitive than \DM{} to dense local structures because of its $\ne^2$ weighting.
+    \item Projection maps provide an essential diagnostic for identifying problematic geometry, unit, or field-reading issues before interpreting \DM{} and \EM{} statistics.
+    \item Unit metadata and smoothing-length availability are critical for robust particle-based analyses, particularly for Tipsy-format CHANGA outputs.
+\end{enumerate}
+
+\acknowledgments
+% Add funding, collaboration, and computing acknowledgments here.
+
+\software{yt, NumPy, SciPy, Matplotlib, joblib, pandas}
+
+\bibliographystyle{aasjournal}
+\bibliography{references}
+
+\end{document}

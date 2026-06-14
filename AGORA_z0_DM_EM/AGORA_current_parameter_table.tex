@@ -1,0 +1,97 @@
+% Auto-generated AGORA DM/EM parameter memo table.
+% Requires: \usepackage{booktabs,longtable,array}
+\begingroup
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.08}
+
+\begin{longtable}{@{}
+p{0.13\textwidth}
+p{0.31\textwidth}
+p{0.28\textwidth}
+p{0.17\textwidth}
+@{}}
+
+\caption{Current AGORA DM/EM pipeline input parameters and default values.}
+\label{tab:agora-dmem-params}\\
+
+\toprule
+Category & Parameter & Using Value/default & Note \\
+\midrule
+\endfirsthead
+
+\toprule
+Category & Parameter & Value/default & Note \\
+\midrule
+\endhead
+
+\bottomrule
+\endfoot
+
+Dataset & \texttt{DATASET\_CODE} & \texttt{GEAR} & Code name \\
+Dataset & \texttt{MANUAL\_SNAPSHOT} & \texttt{None} & Optional \\
+Dataset & \texttt{SNAPSHOT} & Auto-discovered & Path \\
+Dataset & \texttt{OUTDIR} & \texttt{ROOT/parallel\_outputs/<CODE>} & Output \\
+
+Execution & \texttt{--unit-base} & \texttt{auto} & Units \\
+Execution & \texttt{--integration-backend} & \texttt{auto} & Backend \\
+Execution & \texttt{--particle-interpolation} & \texttt{auto} & SPH mode \\
+Execution & \texttt{N\_JOBS} & 14 & Cores \\
+Execution & \texttt{--chunk-los} & 64 & Chunk \\
+Execution & \texttt{--parallel-los-chunk} & \texttt{None} & Parallel \\
+
+Geometry & \texttt{--center-mode} & \texttt{stellar\_com} & Center \\
+Geometry & \texttt{--center-radius-kpc} & 30.0 & Aperture \\
+Geometry & \texttt{--disk-normal-source} & \texttt{stars} & Disk axis \\
+Geometry & \texttt{--angular-momentum-radius-kpc} & 20.0 & $L$ aperture \\
+Geometry & \texttt{--cold-gas-Tmax-K} & $3.0\times10^{4}$ & Cold cut \\
+
+Observer & \texttt{R\_SUN\_KPC} & 8.2 & Solar radius \\
+Observer & \texttt{--phi-sun-deg} & 0.0 & Azimuth \\
+Observer & \texttt{--z-sun-kpc} & 0.02 & Height \\
+Observer & \texttt{RANDOM\_OBSERVERS} & 128 & MC observers \\
+
+LOS & \texttt{N\_LOS} & 20000 & Sightlines \\
+LOS & \texttt{S\_MAX\_KPC} & 250 & Max path \\
+LOS & \texttt{DS\_KPC} & 0.25 & Step \\
+LOS & \texttt{--n-ngb} & 32 & Neighbors \\
+LOS & \texttt{--max-kernel-radius-kpc} & 5.0 & Kernel cap \\
+
+Velocity & \texttt{VELOCITY\_REFERENCE\_SOURCE} & \texttt{gas} / \texttt{stars} & Bulk frame \\
+Velocity & \texttt{VELOCITY\_REFERENCE\_RADIUS\_KPC} & 30.0 & Aperture \\
+
+Ionization & \texttt{IONIZATION\_MODE} & \texttt{auto} & Model \\
+Ionization & \texttt{--prefer-electron-field} & Enabled & Use $n_e$ \\
+Ionization & \texttt{X\_H} & 0.76 & H fraction \\
+Ionization & \texttt{Y\_He} & 0.24 & He fraction \\
+Ionization & \texttt{--ionized-Tmin-K} & $1.0\times10^{4}$ & Floor \\
+Ionization & \texttt{--ionized-Tmid-K} & $1.0\times10^{4}$ & Midpoint \\
+Ionization & \texttt{--ionized-logT-width} & 0.25 & Width \\
+
+Gas & \texttt{ISM\_R\_KPC} & 20.0 & ISM radius \\
+Gas & \texttt{ISM\_ABS\_Z\_KPC} & 5.0 & ISM height \\
+Gas & \texttt{--cgm-inner-r-kpc} & 20.0 & CGM inner \\
+Gas & \texttt{--cgm-outer-r-kpc} & 250.0 & CGM outer \\
+Gas & \texttt{HOT\_TMIN\_K} & $1.0\times10^{6}$ & Hot cut \\
+
+Projection & \texttt{--make-projections} & Enabled & Maps \\
+Projection & \texttt{PROJECTION\_BOX\_KPC} & 40 & Box size \\
+Projection & \texttt{PROJECTION\_NPIX} & 512 & Pixels \\
+Projection & \texttt{PROJECTION\_MAX\_ELEMENTS} & $10^{9}$ & Element cap \\
+Projection & \texttt{PROJECTION\_QUIVER\_STEP} & 12 & Arrow step \\
+Projection & \texttt{--projection-quiver-scale} & 1800.0 & Arrow scale \\
+Projection & \texttt{--projection-quiver-width} & 0.0022 & Arrow width \\
+Projection & \texttt{--projection-quiver-alpha} & 0.75 & Arrow alpha \\
+
+Diagnostics & \texttt{--make-mollweide} & Enabled & Sky maps \\
+Diagnostics & \texttt{--make-hot-em-diagnostics} & Enabled & Hot EM \\
+
+Randomness & \texttt{--random-rotate-directions} & Disabled & Rotation \\
+Randomness & \texttt{--seed} & 12345 & Seed \\
+
+CHANGA & \texttt{--tipsy-length-unit-kpc} & \texttt{None} & Length \\
+CHANGA & \texttt{--tipsy-mass-unit-msun} & \texttt{None} & Mass \\
+CHANGA & \texttt{--tipsy-time-unit-s} & \texttt{None} & Time \\
+
+\end{longtable}
+\endgroup

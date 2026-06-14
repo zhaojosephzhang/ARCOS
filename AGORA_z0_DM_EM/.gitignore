@@ -1,0 +1,31 @@
+# Raw AGORA datasets and generated analysis products are intentionally excluded.
+ARTI/
+AREPO/
+CHANGA/
+Enzo/
+G4Cal_Pablo/
+GADGET3/
+GEAR/
+MW_DM_EM_*_output/
+parallel_outputs/
+batch_logs_20k/
+single_logs/
+debug_outputs/
+__pycache__/
+
+# Large/cache data products
+*.hdf5
+*.DAT
+*.dat
+*.d
+*.ewah
+*.kdtree
+*.npz
+*.csv~
+*.log
+*.swp
+
+# OS/editor noise
+.DS_Store
+robots.txt.tmp
+wget-log

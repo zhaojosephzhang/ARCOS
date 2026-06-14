@@ -1,6 +1,11 @@
 # Analysis Repository for COsmological FRB studies in Simulations (ARCOS)
 
-This repository contains a collection of analysis scripts built around simulation data from **[CROCODILE](https://sites.google.com/view/crocodilesimulation/)**, based on **GADGET4-Osaka**.
+This repository contains a collection of analysis scripts for cosmological
+simulation studies of FRB-related observables, baryon distributions, halo gas,
+and line-of-sight propagation effects.  Most modules were originally developed
+around **[CROCODILE](https://sites.google.com/view/crocodilesimulation/)**
+and **GADGET4-Osaka** data, with newer components adding cross-code AGORA
+analysis workflows.
 
 ---
 
@@ -55,6 +60,28 @@ This repository is organized into several analysis pipelines and utility modules
 
 ---
 
+### AGORA Cross-Code Milky-Way-like DM/EM Analysis
+
+- `AGORA_z0_DM_EM/`
+
+  Multi-code AGORA z0 analysis for Milky-Way-like dispersion measure (DM),
+  emission measure (EM), hot-gas EM, projection maps, and all-sky diagnostics.
+  This module includes:
+
+  - a command-line pipeline for one snapshot:
+    `AGORA_parallel_DM_EM_projection_pipeline.py`
+  - a batch runner for synchronized 20k-sightline runs across AGORA codes:
+    `run_all_agora_codes_20k.sh`
+  - notebooks for running, debugging, dataset inspection, and result viewing
+  - lightweight dataset inspection summaries and LaTeX parameter tables
+
+  The module supports AGORA outputs from `ARTI`, `Enzo`, `AREPO`, `GADGET3`,
+  `GEAR`, `G4Cal_Pablo`, and `CHANGA`. Raw AGORA snapshots and generated
+  products are intentionally excluded from Git; see the module README for data
+  layout, caveats, and reproducibility notes.
+
+---
+
 ### Light-cone & Line-of-Sight Analysis
 
 - `FALCON/`--(FRB Analysis & Light-cone COsmology simulatioN)
@@ -89,6 +116,7 @@ Typical use cases include:
 - constructing light-cone DM products  
 - analyzing sightline-to-sightline variations  
 - comparing different light-cone construction strategies  
+- comparing AGORA multi-code Milky-Way-like DM/EM, hot EM, and projection maps
 
 Detailed workflows are described in the `README.md` files inside each subdirectory.
 
@@ -135,5 +163,6 @@ Recommended entry points:
 - `igm_pipeline/` → baryon evolution analysis in IGM and CGM for differnet components
 - `fb_pipeline/` → baryon-fraction profiles in halos
 - `Light-cone_LoS_analysis/` → light-cone and LoS-based DM studies  
+- `AGORA_z0_DM_EM/` → AGORA z0 multi-code MW-like DM/EM, hot EM, and projection-map comparison
 
 ---

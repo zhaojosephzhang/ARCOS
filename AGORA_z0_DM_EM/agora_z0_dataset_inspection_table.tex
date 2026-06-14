@@ -1,0 +1,25 @@
+% Requires: \usepackage{booktabs} and \usepackage{threeparttable}
+\begin{table*}
+\centering
+\caption{Summary of the AGORA $z\simeq0$ datasets inspected for the DM/EM analysis.}
+\label{tab:agora_dataset_inspection}
+\begin{threeparttable}
+\begin{tabular}{lcccrrrlll}
+\toprule
+Code & $z$ & yt frontend & Backend & $N_{\rm gas}$ & $N_\star$ & $N_{\rm DM}$ & $\rho_{\rm gas}$ & $T_{\rm gas}$ & $n_e$ field \\
+\midrule
+AREPO & 0 & gadget & particle & 18,024,277 & 1,781,328 & 14,843,736 & Density & Temperature & -- \\
+ARTI & 0 & art & gridray & -- & 5,517,113 & 15,676,313 & density & temperature & -- \\
+CHANGA & -- & tipsy & particle & 13,554,025 & 1,614,540 & 19,584,552 & density & temperature & -- \\
+Enzo & 0.010 & enzo & gridray & -- & -- & -- & density & temperature & -- \\
+G4Cal\_Pablo & 0.911 & gadget & gridray & 13,682,898 & 2,899,865 & 14,843,736 & density & temperature & -- \\
+GADGET3 & 0.300 & gizmo & particle & 13,583,965 & 1,259,771 & 14,843,736 & Density & Temperature & ElectronAbundance \\
+GEAR & 0.297 & gadget & particle & 13,272,961 & 1,570,775 & 14,843,736 & Density & Temperature & -- \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}
+\footnotesize
+\item Notes. Particle counts are taken from the loaded yt dataset. For ART-I, the reported stellar and dark-matter counts are grouped from yt species fields; for Enzo, particles are stored in an aggregate container and the table leaves component counts unspecified. ``-- indicates that no explicit field or component count was identified by the inspection script.
+\end{tablenotes}
+\end{threeparttable}
+\end{table*}
